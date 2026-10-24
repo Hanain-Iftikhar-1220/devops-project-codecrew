@@ -1,5 +1,5 @@
 {
-  "name": "devops-pipeline",
+  "name": "@hanain-iftikhar-1220/devops-pipeline",
   "version": "1.2.0",
   "description": "Renders Markdown files into HTML",
   "main": "tools/build.js",
@@ -22,5 +22,12 @@
   "files": [
     "tools/",
     "README.md"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hanain-Iftikhar-1220/devops-project-codecrew.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }
