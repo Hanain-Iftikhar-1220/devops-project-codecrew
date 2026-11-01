@@ -25,3 +25,7 @@ test('every generated page is non-empty', () => {
     assert.ok(html.trim().length > 0, `${p} should not be empty`);
   }
 });
+
+test('temporary gate failure demonstration', () => {
+  assert.fail('Intentional failure to verify GitHub required status check');
+});
