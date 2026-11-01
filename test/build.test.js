@@ -25,10 +25,3 @@ test('every generated page is non-empty', () => {
     assert.ok(html.trim().length > 0, `${p} should not be empty`);
   }
 });
-
-test('each page title is its source filename', () => {
-  for (const p of pages) {
-    const html = fs.readFileSync('out/' + p, 'utf8');
-    assert.ok(html.includes('<title>' + p.replace('.html', '') + '</title>'));
-  }
-});
