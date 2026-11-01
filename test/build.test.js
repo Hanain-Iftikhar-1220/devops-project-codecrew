@@ -25,5 +25,3 @@ test('every generated page is non-empty', () => {
     assert.ok(html.trim().length > 0, `${p} should not be empty`);
   }
 });
-
-test('this always fails', () => assert.ok(false));
