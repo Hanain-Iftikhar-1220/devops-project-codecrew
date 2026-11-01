@@ -1,4 +1,3 @@
-
 name: CI
 
 on:
@@ -10,6 +9,7 @@ jobs:
   build:
     name: build-and-test
     runs-on: ubuntu-24.04
+
     steps:
       - uses: actions/checkout@v4
 
@@ -20,9 +20,11 @@ jobs:
       - name: Build, test and package
         run: make ci
 
+      - name: Create npm package
+        run: npm pack
+
       - uses: actions/upload-artifact@v4
         with:
           name: devops-pipeline
           path: '*.tgz'
           if-no-files-found: error
-
