@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 const fs = require('fs');
 const path = require('path');
 const MarkdownIt = require('markdown-it');
@@ -34,7 +33,6 @@ function main(argv) {
 
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   fs.writeFileSync(dest, html);
-
   return 0;
 }
 
