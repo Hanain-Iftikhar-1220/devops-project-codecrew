@@ -41,6 +41,9 @@ build: check $(OUTPUTS)
 test: build
 	@npm test --silent
 
+package: test ## create the npm package
+	npm pack
+
 clean:
 	rm -rf $(OUT_DIR) coverage *.tgz
 
