@@ -27,6 +27,8 @@ check:
 	fi
 	@echo "CHECK PASSED: $(words $(SOURCES)) source files found"
 
+lint: node_modules ## static analysis: seconds, so it runs first
+	npm run --silent lint
 
 build: check $(OUTPUTS)
 
@@ -36,4 +38,4 @@ test: build
 clean:
 	rm -rf $(OUT_DIR)
 
-ci: clean check test
+ci: clean deps check lint test package
