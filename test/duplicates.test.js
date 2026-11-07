@@ -1,17 +1,17 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
+const { test } = require('node:test');
+const assert = require('node:assert');
 const { isDuplicate } = require('../tools/duplicates');
 
-test('returns false when page titles are different', () => {
+test('different titles are not duplicates', () => {
   assert.strictEqual(
     isDuplicate({ title: 'Page A' }, { title: 'Page B' }),
     false
   );
 });
 
-test('returns true when page titles are the same', () => {
+test('same titles are duplicates', () => {
   assert.strictEqual(
-    isDuplicate({ title: 'Home' }, { title: 'Home' }),
+    isDuplicate({ title: 'Page A' }, { title: 'Page A' }),
     true
   );
 });
