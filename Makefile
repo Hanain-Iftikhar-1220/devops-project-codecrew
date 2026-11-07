@@ -27,13 +27,24 @@ check:
 	fi
 	@echo "CHECK PASSED: $(words $(SOURCES)) source files found"
 
+lint: node_modules ## static analysis: seconds, so it runs first
+	npm run --silent lint
+
+coverage: build ## the tests again, writing coverage/lcov.info for SonarQube
+	@mkdir -p coverage
+	node --test --experimental-test-coverage \
+	  --test-reporter=spec --test-reporter-destination=stdout \
+	  --test-reporter=lcov --test-reporter-destination=coverage/lcov.info
 
 build: check $(OUTPUTS)
 
 test: build
 	@npm test --silent
 
-clean:
-	rm -rf $(OUT_DIR)
+package: test ## create the npm package
+	npm pack
 
-ci: clean check test
+clean:
+	rm -rf $(OUT_DIR) coverage *.tgz
+
+ci: clean deps check lint test package
